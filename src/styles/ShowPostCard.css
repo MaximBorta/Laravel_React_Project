@@ -1,0 +1,16 @@
+.show-card-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.show-card-media {
+    width: 100%;
+}
+
+.show-card-img {
+    width: 100%;
+}

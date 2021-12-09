@@ -1,0 +1,23 @@
+.selected {
+    color: #f35a08;
+}
+.navLink {
+    text-decoration: none;
+    margin-right: 10px;
+}
+.nav-sign-up {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    min-width: 300px;
+}
+.nav-sign-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+}

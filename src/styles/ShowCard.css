@@ -1,0 +1,40 @@
+.show-card-wrapper {
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 5px 3px 3px rgba(0, 0, 0, .5);
+}
+
+.show-card-action {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-card-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.show-card-body {
+    text-align: center
+}
+
+.show-card-img {
+    width: 100%;
+}
+
+.back {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

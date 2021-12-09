@@ -1,0 +1,72 @@
+import React, {Component} from 'react';
+import {connect} from "react-redux";
+import '../../styles/Post.css'
+import {deletePostAction, getPostsAction} from "../../redux/action/postActionCreator";
+import {Box, Container} from "@mui/material";
+import {Button, CircularProgress, Typography} from "@material-ui/core";
+import PostItem from "./PostItem";
+import {withRouter} from "react-router-dom";
+
+class Post extends Component {
+    constructor(props) {
+        super(props);
+
+        this.createPost = this.createPost.bind(this)
+    }
+    componentDidMount() {
+        this.props.getPostsAction()
+    }
+     createPost() {
+        this.props.history.push('/user/user-posts/create')
+    }
+
+    render() {
+        return (
+            <>
+                {
+                    this.props.isLoading === true
+                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: 100}}>
+                            <CircularProgress/>
+                        </div>
+                        : <Container maxWidth={"lg"}>
+                            <Typography variant="h3" color={"primary"} style={{textAlign: 'center'}}>
+                                Posts
+                            </Typography>
+                            <Button
+                                variant={"contained"}
+                                color={"primary"}
+                                onClick={this.createPost}
+                            >
+                                Create post
+                            </Button>
+                            {
+                                this.props.postResponse.length !== 0
+                                    ? <div>
+                                        <PostItem {...this.props} />
+                                    </div>
+                                    : <Box mt={4}>
+                                        <Typography variant={'h4'} color={"secondary"}>No posts...</Typography>
+                                    </Box>
+                            }
+                        </Container>
+                }
+            </>
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.postData.isLoading,
+        isDestroying: state.postData.isDestroying,
+        postResponse: state.postData.postResponse,
+        deletedPostResponse: state.postData.deletedPostResponse,
+    }
+}
+
+const withRouterPost = withRouter(Post)
+
+export default connect(mapStateToProps, {
+    getPostsAction,
+    deletePostAction
+})(withRouterPost);

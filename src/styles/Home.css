@@ -1,0 +1,36 @@
+.home-card-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.home-card {
+    padding: 10px;
+    width: 25% ;
+    margin: 10px;
+    min-width: 300px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+    transition: all .2s ease-in-out;
+}
+.home-card:hover {
+    background-color: #cec9c9;
+}
+
+.home-card-img {
+    width: 100%;
+    cursor: pointer;
+}
+.home-card-id {
+    color: #de2d0e;
+}
+
+.home-card-body{
+    text-align: center;
+}
+
+.home-card-action {
+    width: 100%;
+}

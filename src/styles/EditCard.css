@@ -1,0 +1,19 @@
+.edit-card-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit-card-form {
+    width: 100%;
+    margin-top: 50px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, .5);
+    padding: 10px;
+}
+
+.edit-card-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

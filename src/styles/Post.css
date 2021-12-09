@@ -1,0 +1,25 @@
+.post_card_wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.post_card {
+    width: 25%;
+    min-width: 200px;
+    height: 300px;
+    background-color: #f1e7c4;
+    margin: 10px 10px 10px 0;
+    padding: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+    transition: background-color .2s ease-in;
+}
+.post_card:hover {
+    background-color: #d2c7a5;
+}
+.post_card_img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
