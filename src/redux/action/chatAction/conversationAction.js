@@ -13,10 +13,9 @@ const BASE_URL = 'http://localhost:8000/api/users'
 
 export const fetchConversationWith = (id, force = false) => (dispatch, getState) =>
     new Promise((resolve, reject) => {
-        debugger
         let cached = getState().conversationCache[id]
         let lastMessage = getState().lastMessages[id]
-
+        
         if (!force && cached && (!lastMessage || cached[cached.length - 1].id === lastMessage.id)) {
             dispatch({
                 type: ActionTypes.FETCH_CONVERSATION_WITH,
@@ -26,7 +25,7 @@ export const fetchConversationWith = (id, force = false) => (dispatch, getState)
             return
         }
         axios.get(`${BASE_URL}/conversation/${id}`, options).then(res => {
-            if (getState().activeUserId !== id) return
+            if (getState().activeUserId.activeUserId !== id) return
             dispatch({
                 type: ActionTypes.FETCH_CONVERSATION_WITH,
                 payload: res.data
@@ -45,11 +44,10 @@ export const fetchConversationWith = (id, force = false) => (dispatch, getState)
 export const fetchLastMessageWith = (id) => async (dispatch) =>
     new Promise((resolve, reject) => {
         axios.get(`${BASE_URL}/conversation/last/${id}`, options).then(res => {
-            debugger
             dispatch({
                 type: ActionTypes.FETCH_LAST_MESSAGE_WITH,
                 payload: {
-                    id: id,
+                    id,
                     message: res.data
                 }
             })
@@ -78,8 +76,7 @@ export const addLocalMsgToConversation = (message) => (dispatch) =>
 
 export const setActiveUserId = (id) => (dispatch, getState) => {
     let conversation = getState().conversation
-    let currentId = getState().activeUserId
-
+    let currentId = getState().activeUserId.activeUserId
     if (conversation.length && (conversation[conversation.length - 1].sender_id === currentId ||
         conversation[conversation.length -1].recipient_id === currentId))
         dispatch({

@@ -1,8 +1,8 @@
 import * as ActionTypes from '../types/actionTypes'
 
 let initialState = {
-    authResponse: '',
-    authError: '',
+    authResponse: {},
+    authError: {},
     isAuthLoading: false
 }
 
@@ -11,7 +11,7 @@ export const authReducers = (state = initialState, action) => {
         case ActionTypes.RESTART_AUTH_RESPONSE:
             return {
                 ...state,
-                authResponse: ''
+                authResponse: {}
             }
         case ActionTypes.LOADING:
             return {
@@ -57,7 +57,7 @@ export const authReducers = (state = initialState, action) => {
         case ActionTypes.CODE_ERROR:
             return {
                 ...state,
-                authResponse: 'There seems to be a problem, please refresh your browser :)'
+                authResponse: action.payload
             }
         default:
             return state

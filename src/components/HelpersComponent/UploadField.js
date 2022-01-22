@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Button from '@material-ui/core/Button';
@@ -41,4 +42,8 @@ export default function UploadButtons(props) {
             </label>
         </div>
     );
+}
+
+UploadButtons.propTypes = {
+    onPostUpload: PropTypes.func.isRequired
 }

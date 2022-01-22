@@ -26,5 +26,7 @@ export const sentMessageTo = (id) => (dispatch, getState) =>
         options
     ).then(res => {
         resolve()
+    }).catch(error => {
+        dispatch({type: ActionTypes.SEND_MESSAGE_TO_ERROR, error})
     })
 })

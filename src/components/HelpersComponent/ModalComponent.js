@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
@@ -16,14 +17,13 @@ const style = {
     p: 4,
 };
 
-const ModalComponent = (props) => {
+const ModalComponent = ({src, alt}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
     return (
         <div>
-            <img className="home-card-img" onClick={handleOpen} src={props.src} alt={props.alt}/>
+            <img className="home-card-img" onClick={handleOpen} src={src} alt={alt}/>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -32,12 +32,16 @@ const ModalComponent = (props) => {
             >
                 <Box sx={style}>
                     <div >
-                        <img style={{width: '100%'}} src={props.src} alt={props.alt}/>
+                        <img style={{width: '100%'}} src={src} alt={alt}/>
                     </div>
                 </Box>
             </Modal>
         </div>
     );
+}
+ModalComponent.propTypes = {
+    alt: PropTypes.string,
+    src: PropTypes.string,
 }
 
 export default ModalComponent

@@ -7,19 +7,23 @@ const CarouselHoc = (WrappedComponent) => {
             this.state = {
                 index: 0
             }
-            this.previous = () => {
-                const {index} = this.state
-                if (index > 0) {
-                    this.setState({index: index - 1})
-                }
-            }
-            this.next = () => {
-                const {index} = this.state
-                this.setState({
-                    index: index + 1
-                })
-            }
+            this.previous = this.previous.bind(this)
+            this.next = this.next.bind(this)
         }
+         previous(){
+             const {index} = this.state
+             if (index > 0) {
+                 this.setState({index: index - 1})
+             }
+             clearTimeout(index)
+         }
+         next(){
+             const {index} = this.state
+             this.setState({
+                 index: index + 1
+             })
+             clearTimeout(index)
+         }
 
         render() {
             return (

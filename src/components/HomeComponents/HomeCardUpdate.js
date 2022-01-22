@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import {connect} from "react-redux";
 import '../../styles/EditCard.css'
 import {editCardAction, showHomeCardAction} from "../../redux/action/homeActionCreator";
@@ -35,7 +36,7 @@ class HomeCardUpdate extends Component {
             description: this.state.description,
         }
         this.props.editCardAction(this.state.cardId, formData)
-            this.props.history.push(`/card/show/${this.state.cardId}`)
+        this.props.history.push(`/card/show/${this.state.cardId}`)
     }
 
     componentDidMount() {
@@ -49,17 +50,24 @@ class HomeCardUpdate extends Component {
     }
 
     render() {
+        let {isLoading, isEditing} = this.props
         return (
             <div>
                 <Container maxWidth={"md"}>
                     {
-                        this.props.isLoading === true
-                        ? <div style={{marginTop: 200, display: 'flex', justifyContent: 'center', alignItem: 'center'}}>
-                                <CircularProgress />
+                        isLoading === true
+                            ? <div
+                                style={{marginTop: 200, display: 'flex', justifyContent: 'center', alignItem: 'center'}}>
+                                <CircularProgress/>
                             </div>
-                        : <Box mt={4}>
-                                <Link to={`/card/show/${this.state.cardId}`} style={{display: 'flex', justifyContent: 'center', alignItem: 'center', marginBottom: 10}}>
-                                    <ArrowBackIcon />
+                            : <Box mt={4}>
+                                <Link to={`/card/show/${this.state.cardId}`} style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItem: 'center',
+                                    marginBottom: 10
+                                }}>
+                                    <ArrowBackIcon/>
                                     Go Back
                                 </Link>
                                 <div className="edit-card-wrapper">
@@ -67,16 +75,24 @@ class HomeCardUpdate extends Component {
                                     <form className="edit-card-form" onSubmit={this.onCardUpdate}>
                                         {
                                             this.state.editedResponse.success === true
-                                            ? <Typography color={'secondary'} style={{textAlign: 'center', marginBottom: 10, display: this.destroy() ? 'none' : 'block'}}>
+                                                ? <Typography color={'secondary'} style={{
+                                                    textAlign: 'center',
+                                                    marginBottom: 10,
+                                                    display: this.destroy() ? 'none' : 'block'
+                                                }}>
                                                     {this.state.editedResponse.message}
-                                            </Typography>
-                                            : ''
+                                                </Typography>
+                                                : ''
                                         }
                                         {
                                             this.state.editedResponse.status === 422
-                                            && <Typography color={'secondary'} style={{textAlign: 'center', marginBottom: 10, display: this.destroy() ? 'none' : 'block'}}>
+                                            && <Typography color={'secondary'} style={{
+                                                textAlign: 'center',
+                                                marginBottom: 10,
+                                                display: this.destroy() ? 'none' : 'block'
+                                            }}>
                                                 {this.state.editedResponse.data.message}
-                                                </Typography>
+                                            </Typography>
                                         }
                                         <Box mb={2}>
                                             <TextField
@@ -102,9 +118,9 @@ class HomeCardUpdate extends Component {
                                                     fullWidth={true}
                                             >
                                                 {
-                                                    this.props.isEditing === true
-                                                    ? <CircularProgress />
-                                                    :<Typography>Update</Typography>
+                                                    isEditing === true
+                                                        ? <CircularProgress/>
+                                                        : <Typography>Update</Typography>
                                                 }
                                             </Button>
                                         </div>
@@ -116,6 +132,12 @@ class HomeCardUpdate extends Component {
             </div>
         );
     }
+}
+HomeCardUpdate.propTypes = {
+    isLoading: PropTypes.bool,
+    isEditing: PropTypes.bool,
+    showCard: PropTypes.object,
+    editedResponse: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {

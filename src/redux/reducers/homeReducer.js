@@ -4,10 +4,10 @@ import * as ActionTypes from '../types/actionTypes'
 let initialState = {
     isLoading: false,
     isEditing: false,
-    response: '',
-    editedResponse: '',
+    response: [],
+    editedResponse: {},
     getCards: [],
-    showCard: ''
+    showCard: {}
 }
 
 export const homeReducer = (state = initialState, action) => {

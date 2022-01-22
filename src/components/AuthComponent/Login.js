@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types'
 import LoginForm from "./LoginForm";
 import {Box, Container, Grid, Typography} from "@material-ui/core";
-import {connect} from "react-redux";
-import {LoginAction} from "../../redux/action/authActionCreator";
-import validate from "../../helpers/registerValidate";
-import {reduxForm} from "redux-form";
 import {useHistory} from "react-router-dom";
 import AlertComponent from "../../helpers/AlertComponent";
 
@@ -23,8 +20,9 @@ const Login = (props) => {
     }
 
     const onLoginSubmit = (e) => {
+        let {LoginAction} = props
         e.preventDefault()
-        props.LoginAction(fields, history)
+        LoginAction(fields, history)
     }
 
     return (
@@ -36,7 +34,7 @@ const Login = (props) => {
                             <div className="auth-container">
                                 {
                                     props.authResponse.success === true
-                                    &&  <AlertComponent authResponse={props.authResponse.message}/>
+                                    && <AlertComponent authResponse={props.authResponse.message}/>
                                 }
                                 {
                                     props.authError.success === false
@@ -60,20 +58,10 @@ const Login = (props) => {
     );
 }
 
-const LoginReduxForm = reduxForm({
-    form: 'login',
-    validate
-})(Login)
-
-
-const mapStateToProps = (state) => {
-    return {
-        authResponse: state.authData.authResponse,
-        authError: state.authData.authError,
-        isAuthLoading: state.authData.isAuthLoading,
-    }
+Login.propTypes = {
+    authResponse: PropTypes.object,
+    authError: PropTypes.object,
+    isAuthLoading: PropTypes.bool,
 }
 
-export default connect(mapStateToProps, {
-    LoginAction
-})(LoginReduxForm);
+export default Login

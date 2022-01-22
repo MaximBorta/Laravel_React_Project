@@ -13,6 +13,8 @@ import {messageReducer} from "./reducers/chat/messageReducer";
 import {friendsReducer} from "./reducers/chat/friendsReducer";
 import {lastMessagesReducer} from "./reducers/chat/lastMessagesReducer";
 import {conversationCacheReducer} from "./reducers/chat/conversationCacheReducer";
+import {messageErrorReducer} from "./reducers/chat/messageErrorReducer";
+import {onlineUsersReducer} from "./reducers/onlineUsersReducer";
 
 
 let rootReducer = combineReducers({
@@ -26,9 +28,11 @@ let rootReducer = combineReducers({
     activeUserId: activeUserIdReducer,
     conversation: conversationReducer,
     message: messageReducer,
+    messageError: messageErrorReducer,
     friends: friendsReducer,
     lastMessages: lastMessagesReducer,
     conversationCache: conversationCacheReducer,
+    online: onlineUsersReducer,
 
     form: formReducer
 })

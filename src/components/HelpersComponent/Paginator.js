@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types'
 
 const usePagination = (data, itemsPerPage) => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -22,6 +23,10 @@ const usePagination = (data, itemsPerPage) => {
     }
 
     return { next, prev, jump, currentData, currentPage, maxPage };
+}
+usePagination.propTypes = {
+    data: PropTypes.array,
+    itemsPerPage: PropTypes.number,
 }
 
 export default usePagination

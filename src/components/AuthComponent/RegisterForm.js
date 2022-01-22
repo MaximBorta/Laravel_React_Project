@@ -34,6 +34,7 @@ class RegisterForm extends Component {
                             name={'email'}
                             component={renderTextField}
                             fullWidth={true}
+                            type={'email'}
                             label="email"
                             variant={'outlined'}
                             value={this.props.fields.email}

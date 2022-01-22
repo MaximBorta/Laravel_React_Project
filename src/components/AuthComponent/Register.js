@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import '../../styles/Auth.css'
 import {Box, Container, Grid, Typography} from "@material-ui/core";
-import {reduxForm} from 'redux-form'
-import validate from "../../helpers/registerValidate";
 import RegisterForm from "./RegisterForm";
-import {connect} from "react-redux";
-import {RegisterAction} from "../../redux/action/authActionCreator";
 import AlertComponent from "../../helpers/AlertComponent";
-import {withRouter} from "react-router";
 
-class Register extends Component{
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,17 +18,18 @@ class Register extends Component{
         this.onRegisterSubmit = this.onRegisterSubmit.bind(this)
     }
 
-    onRegisterChange(e){
-       this.setState({
-           ...this.state,
+    onRegisterChange(e) {
+        this.setState({
+            ...this.state,
             [e.target.name]: e.target.value
         })
     }
 
-    onRegisterSubmit(e){
+    onRegisterSubmit(e) {
         e.preventDefault()
         this.props.RegisterAction(this.state, this.props.history)
     }
+
     render() {
         return (
             <div>
@@ -43,7 +40,7 @@ class Register extends Component{
                                 <div className="auth-container">
                                     {
                                         this.props.authResponse.success === true
-                                        &&  <AlertComponent authResponse={this.props.authResponse.message}/>
+                                        && <AlertComponent authResponse={this.props.authResponse.message}/>
                                     }
                                     <Typography variant={'h3'}>Registration</Typography>
                                     <Box width={'100%'}>
@@ -63,20 +60,10 @@ class Register extends Component{
     }
 }
 
-const RegisterReduxForm = reduxForm({
-    form: 'register',
-    validate
-})(Register)
-
-const mapStateToProps = (state) => {
-    return {
-        authResponse: state.authData.authResponse,
-        isAuthLoading: state.authData.isAuthLoading,
-    }
+Register.propTypes = {
+    authResponse: PropTypes.object,
+    isAuthLoading: PropTypes.bool,
+    RegisterAction: PropTypes.func,
 }
 
-const WithRegisterRedirect = withRouter(RegisterReduxForm)
-
-export default connect(mapStateToProps, {
-    RegisterAction
-})(WithRegisterRedirect);
+export default Register

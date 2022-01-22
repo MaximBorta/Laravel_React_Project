@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 
 export const Carousel = ({index, ...props}) => {
@@ -38,4 +39,9 @@ export const Carousel = ({index, ...props}) => {
             </div>
         </div>
     )
+}
+
+Carousel.propTypes = {
+    children: PropTypes.array,
+    index: PropTypes.number,
 }

@@ -20,6 +20,7 @@ class LoginForm extends Component {
                             component={renderTextField}
                             fullWidth={true}
                             label="email"
+                            type={'email'}
                             variant={'outlined'}
                             value={this.props.fields.email}
                             onChange={this.props.onLoginChange}

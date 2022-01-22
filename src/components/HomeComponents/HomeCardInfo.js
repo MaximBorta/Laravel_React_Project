@@ -23,7 +23,7 @@ class HomeCardInfo extends Component {
     }
 
     render() {
-        let showCard = this.props.showCard
+        let {showCard} = this.props
         return (
             <div>
                 <Container maxWidth={'md'}>

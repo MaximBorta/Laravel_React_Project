@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
-import {getHomeCardAction, getHomeHeaderAction} from "../../redux/action/homeActionCreator";
+import PropTypes from 'prop-types'
 import {CircularProgress} from "@material-ui/core";
 import HomeHeader from "./HomeHeader";
 import HomeCards from "./HomeCards";
@@ -10,7 +9,6 @@ class Home extends Component {
         this.props.getHomeHeaderAction()
         this.props.getHomeCardAction()
     }
-
     render() {
         return (
             <div>
@@ -30,16 +28,12 @@ class Home extends Component {
         );
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.homeData.isLoading,
-        response: state.homeData.response,
-        getCards: state.homeData.getCards,
-    }
+Home.propTypes = {
+    isLoading: PropTypes.bool,
+    response: PropTypes.array,
+    getCards: PropTypes.array,
+    getHomeHeaderAction: PropTypes.func.isRequired,
+    getHomeCardAction: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, {
-    getHomeHeaderAction,
-    getHomeCardAction,
-})(Home);
+export default Home

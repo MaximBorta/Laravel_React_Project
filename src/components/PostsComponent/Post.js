@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
 import '../../styles/Post.css'
-import {deletePostAction, getPostsAction} from "../../redux/action/postActionCreator";
 import {Box, Container} from "@mui/material";
 import {Button, CircularProgress, Typography} from "@material-ui/core";
 import PostItem from "./PostItem";
-import {withRouter} from "react-router-dom";
 
 class Post extends Component {
     constructor(props) {
@@ -55,18 +52,4 @@ class Post extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.postData.isLoading,
-        isDestroying: state.postData.isDestroying,
-        postResponse: state.postData.postResponse,
-        deletedPostResponse: state.postData.deletedPostResponse,
-    }
-}
-
-const withRouterPost = withRouter(Post)
-
-export default connect(mapStateToProps, {
-    getPostsAction,
-    deletePostAction
-})(withRouterPost);
+export default Post

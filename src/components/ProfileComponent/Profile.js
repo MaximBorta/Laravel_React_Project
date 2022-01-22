@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
-import {EditProfileAction, ProfileAction, UploadAvatarAction} from "../../redux/action/ProfileActionCreator";
 import {CircularProgress, Container, Grid} from "@material-ui/core";
 import ProfileCard from "./ProfileCard";
 import EditProfile from "./EditProfile";
@@ -19,7 +17,7 @@ class Profile extends Component {
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         if (this.props !== nextProps) {
             return true
-        }else {
+        } else {
             return false
         }
     }
@@ -38,7 +36,8 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        this.props.ProfileAction()
+        let {ProfileAction} = this.props
+        ProfileAction()
     }
 
     render() {
@@ -75,19 +74,4 @@ class Profile extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        userProfile: state.profileData.userProfile,
-        isProfileLoading: state.profileData.isProfileLoading,
-        responseToUpload: state.uploadAvatar.responseToUpload,
-        isUploading: state.uploadAvatar.isUploading,
-        isEditing: state.editProfile.isEditing,
-        editedResponse: state.editProfile.editedResponse,
-    }
-}
-
-export default connect(mapStateToProps, {
-    ProfileAction,
-    UploadAvatarAction,
-    EditProfileAction
-})(Profile);
+export default Profile
