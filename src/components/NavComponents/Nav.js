@@ -7,6 +7,7 @@ import NavSignIn from "../HomeComponents/NavSignIn";
 import {ProfileAction} from "../../redux/action/ProfileActionCreator";
 
 class Nav extends Component {
+
     render() {
         return (
             <>

@@ -4,11 +4,15 @@ import {NavLink, useHistory} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import ProfileAvatar from "../ProfileComponent/ProfileAvatar";
 import HideOnScroll from "../HelpersComponent/HideOnScroll";
+import {useModalWithData} from "../../hooks/useModalWithData";
+import CustomModal from "../HelpersComponent/CustomModal";
+import ProfileDetails from "../ProfileComponent/ProfileDetails";
 
 
 const NavSignIn = (props) => {
     const history = useHistory()
     const token = localStorage.getItem('user-token')
+    const {modalOpen, setSelected, setModalState} = useModalWithData()
 
     const logout = () => {
         props.LogoutAction()
@@ -49,7 +53,19 @@ const NavSignIn = (props) => {
                                             Profile
                                         </Typography>
                                     </NavLink>
-                                    <ProfileAvatar {...props}/>
+                                    <CustomModal
+                                        title={'Profile Detail !'}
+                                        isActive={modalOpen}
+                                        handleClose={() => setModalState(false)}
+                                    >
+                                        <ProfileDetails data={props.userProfile}/>
+                                    </CustomModal>
+                                    <ProfileAvatar
+                                        ProfileAction={props.ProfileAction}
+                                        data={props.userProfile}
+                                        setSelected={setSelected}
+                                        setModalState={setModalState}
+                                    />
                                     <Button size={"small"} color={"secondary"} onClick={logout}>
                                         <Typography variant={'h5'}>
                                             Logout

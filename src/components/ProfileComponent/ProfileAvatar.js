@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Avatar} from "@material-ui/core";
+import {Avatar} from "@mui/material";
 
 class ProfileAvatar extends Component {
     componentDidMount() {
@@ -7,13 +7,18 @@ class ProfileAvatar extends Component {
     }
 
     render() {
+        const {setModalState} = this.props
         return (
             <>
                 {
-                    this.props.userProfile.success === true
-                    && <>
-                        <Avatar alt={this.props.userProfile.data.name} src={`http://localhost:8000/avatars/${this.props.userProfile.data.user_avatar}`} />
-                    </>
+                    this.props.data.success === true
+                    && <div style={{width: 50, height: 50, borderRadius: 100, overflow: 'hidden', cursor: 'pointer'}}>
+                    <Avatar
+                        onClick={() => setModalState(true)}
+                        src={`http://localhost:8000/avatars/${this.props.data.data.user_avatar}`}
+                        alt={this.props.data.data.name}
+                    />
+                    </div>
                 }
             </>
         );

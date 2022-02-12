@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Message from "./Message";
-import {Fab} from "@mui/material";
+import {Fab, Typography} from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 class ChatMessages extends Component {
@@ -8,20 +8,28 @@ class ChatMessages extends Component {
         return (
             <div>
                 {
-                    this.props.conversation.map((message, idx) => (
-                        <Message
-                            key={idx}
-                            message={message}
-                            userProfile={this.props.userProfile}
-                            activeUserId={this.props.activeUserId}
-                        />
-                    ))
+                    this.props.conversation.length === 0
+                        ? <Typography color={'secondary'}>No messages...</Typography>
+                        : (
+                            <>
+                                {
+                                    this.props.conversation.map((message, idx) => (
+                                        <Message
+                                            key={idx}
+                                            message={message}
+                                            userProfile={this.props.userProfile}
+                                            activeUserId={this.props.activeUserId}
+                                        />
+                                    ))
+                                }
+                            </>
+                        )
                 }
                 {
                     this.props.conversation.length !== 0
-                    &&  <div className={this.props.isVisible   ? "scroll-to-bottom": 'hide'}>
+                    && <div className={this.props.isVisible ? "scroll-to-bottom" : 'hide'}>
                         <Fab size={"small"} onClick={this.props.clickToBottom} aria-label="scroll back to bottom">
-                            <KeyboardArrowDownIcon />
+                            <KeyboardArrowDownIcon/>
                         </Fab>
                     </div>
                 }

@@ -45,7 +45,7 @@
 }
 
 .active {
-    background-color: #6c9b31;
+    background-color: #3f51b5;
     color: antiquewhite;
 }
 
@@ -62,13 +62,14 @@
 
 .recipient {
     display: flex;
+    color: antiquewhite;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     margin-left: 400px;
     padding: 10px;
     border-radius: 10px;
-    background-color: #6c9b31;
+    background-color: #074286;
 }
 
 .send_message_input {

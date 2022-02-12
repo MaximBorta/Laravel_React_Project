@@ -1,10 +1,23 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fcf4f4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3f51b5;
+}
+
 .post_card_wrapper {
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
+
 .post_card {
     width: 25%;
     min-width: 200px;
@@ -15,11 +28,72 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
     transition: background-color .2s ease-in;
 }
+
 .post_card:hover {
     background-color: #d2c7a5;
 }
+
 .post_card_img {
     width: 100%;
     height: auto;
     cursor: pointer;
+}
+
+.post-comment-wrapper {
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_card_action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.post_card_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-comment-title-wrapper {
+    width: 700px;
+    min-width: 300px;
+}
+
+.post-comment-detail-img {
+    width: 100%;
+}
+
+.post-comment-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-post-comment-wrapper {
+    height: 200px;
+    overflow: auto;
+    background-color: #b9d3cc;
+    padding: 20px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, .5);
+}
+
+.post-comment {
+    position: relative;
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, .5);
+}
+
+.post-comment-date {
+    position: absolute;
+    right: 10px;
+    top: 20px;
 }

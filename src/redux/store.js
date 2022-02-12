@@ -15,6 +15,7 @@ import {lastMessagesReducer} from "./reducers/chat/lastMessagesReducer";
 import {conversationCacheReducer} from "./reducers/chat/conversationCacheReducer";
 import {messageErrorReducer} from "./reducers/chat/messageErrorReducer";
 import {onlineUsersReducer} from "./reducers/onlineUsersReducer";
+import {commentReducer} from "./reducers/commentReducer";
 
 
 let rootReducer = combineReducers({
@@ -33,6 +34,8 @@ let rootReducer = combineReducers({
     lastMessages: lastMessagesReducer,
     conversationCache: conversationCacheReducer,
     online: onlineUsersReducer,
+
+    comment: commentReducer,
 
     form: formReducer
 })

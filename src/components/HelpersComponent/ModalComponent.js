@@ -31,9 +31,9 @@ const ModalComponent = ({src, alt}) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <div >
+                    <>
                         <img style={{width: '100%'}} src={src} alt={alt}/>
-                    </div>
+                    </>
                 </Box>
             </Modal>
         </div>

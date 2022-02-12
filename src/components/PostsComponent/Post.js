@@ -3,11 +3,12 @@ import '../../styles/Post.css'
 import {Box, Container} from "@mui/material";
 import {Button, CircularProgress, Typography} from "@material-ui/core";
 import PostItem from "./PostItem";
+import withSearchFilter from "../../HOC/withSearchFilter";
+
 
 class Post extends Component {
     constructor(props) {
         super(props);
-
         this.createPost = this.createPost.bind(this)
     }
     componentDidMount() {
@@ -52,4 +53,4 @@ class Post extends Component {
     }
 }
 
-export default Post
+export default withSearchFilter(Post)

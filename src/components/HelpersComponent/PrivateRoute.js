@@ -7,6 +7,7 @@ import {NotFoundPage} from "../NotFound/NotFoundPage";
 import ChatContainer from "../ChatComponents/ChatContainer";
 import PostContainer from "../PostsComponent/PostContainer";
 import ProfileContainer from "../ProfileComponent/ProfileContainer";
+import PostComments from "../PostsComponent/PostComments";
 
 export default function PrivateRoute(props) {
     return (
@@ -19,6 +20,7 @@ export default function PrivateRoute(props) {
                 <Route exact path={`${props.match.path}/user-posts/create`} component={CreatePost}/>
                 <Route path={`${props.match.path}/post/card/show/:id`} exact component={PostCardInfo}/>
                 <Route path={`${props.match.path}/post/card/update/:id`} exact component={UpdatePost}/>
+                <Route path={`${props.match.path}/post/comments/show/:id`} exact component={PostComments}/>
 
                 <Route exact path={props.match.path} render={props=> (
                     <Redirect to={{ pathname: `${props.match.path}/view-profile` }} />

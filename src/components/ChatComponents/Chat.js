@@ -12,6 +12,7 @@ import SendMessage from "./SendMessage";
 import {scrollToBotton} from "../../helpers/scollToBottom";
 import {SlideTransition} from "../HelpersComponent/SlideTransition";
 import Snackbar from "@mui/material/Snackbar";
+import OnlineUsers from "./OnlineUsers";
 
 class Chat extends Component {
     constructor(props) {
@@ -186,7 +187,10 @@ class Chat extends Component {
         return (
             <div>
                 <Container maxWidth={'lg'}>
-                    <h1>Chat Page</h1>
+                    <div>
+                        <h1>Chat Page</h1>
+                        <OnlineUsers />
+                    </div>
                     <Snackbar
                         open={this.state.open}
                         onClose={this.handleClose}

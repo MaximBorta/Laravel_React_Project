@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {CircularProgress} from "@material-ui/core";
 import HomeHeader from "./HomeHeader";
 import HomeCards from "./HomeCards";
+import withSearchFilter from "../../HOC/withSearchFilter";
 
 class Home extends Component {
     componentDidMount() {
@@ -36,4 +37,4 @@ Home.propTypes = {
     getHomeCardAction: PropTypes.func.isRequired,
 }
 
-export default Home
+export default withSearchFilter(Home)
